@@ -1,19 +1,19 @@
-version: 2
+version: 2.1
+orbs:
+  python: circleci/python@2.0.3
+
 jobs:
-  build:
-    working_directory: /dockerapp
-    docker:
-      - image: docker:22.06-rc-git
+  build_and_test: # this can be any name you choose
+    executor: python/default
     steps:
       - checkout
-      - setup_remote_docker
       - python/install-packages:
           pkg-manager: pip
       - run:
           name: Install dependencies
           command:
             pip install docker-compose==2.11.2
-      - run:
+      - run
           name: Run tests
           command:
             docker-compose up -d
