@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+  appweb:
+    image: "abedini/pythonapp:0.03"
+    ports:
+      - "5000:5000"
+    depends_on:
+      - redis
+    networks:
+      - red-docker
+  redis:
+    image: "redis:6.2.7"
+    networks:
+      - red-docker
+
+networks:
+  red-docker:
+    driver: bridge
+
