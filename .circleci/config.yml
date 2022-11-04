@@ -9,7 +9,8 @@ jobs:
       - setup_remote_docker
       - run:
           name: Install dependencies
-          command: |
+          command:
+	    apk add --no-cache py2-pip==9.0.0-r1
             pip install docker-compose==2.11.2
       - run:
           name: Run tests
