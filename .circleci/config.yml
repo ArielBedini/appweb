@@ -1,9 +1,9 @@
 version: 2.1
-orbs:
-  python: circleci/python@2.0.3
+#orbs:
+#  python: circleci/python@2.0.3
 
 jobs:
-  build_and_test: # this can be any name you choose
+  build: # this can be any name you choose
     executor: python/default
     working_directory: /dockerapp
     docker:
