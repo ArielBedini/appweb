@@ -1,7 +1,7 @@
 version: "3.9"
 services:
   appweb:
-    image: "abedini/pythonapp:0.04"
+    image: "abedini/pythonapp:0.03"
     ports:
       - "5000:5000"
     depends_on:
