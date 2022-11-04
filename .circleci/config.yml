@@ -5,8 +5,12 @@ orbs:
 jobs:
   build_and_test: # this can be any name you choose
     executor: python/default
+    working_directory: /dockerapp
+    docker:
+      - image: docker:22.06-rc-git
     steps:
       - checkout
+      - setup_remote_docker
       - python/install-packages:
           pkg-manager: pip
       - run:
@@ -19,10 +23,12 @@ jobs:
             docker-compose up -d
             docker-compose run appweb python test.py
 
-workflows:
-  test_my_app:
-    jobs:
-      - build_and_test
-      - deploy:
-          requires:
-            - build_and_test # only deploy if the build_and_test job has completed
+
+
+#workflows:
+#  test_my_app:
+#    jobs:
+#      - build_and_test
+#      - deploy:
+#          requires:
+#            - build_and_test # only deploy if the build_and_test job has completed
