@@ -3,17 +3,13 @@ jobs:
   build:
     working_directory: /dockerapp
     docker:
-      - image: docker:17.05.0-ce-git
+      - image: docker:22.06-rc-git
     steps:
       - checkout
       - setup_remote_docker
       - run:
           name: Install dependencies
           command:
-            apt-get update
-
-            apt-get install pyhton3.10.7
-
             apk add --no-cache py2-pip=9.0.0-r1
 
             pip install --upgrade pip
