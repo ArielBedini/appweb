@@ -3,7 +3,7 @@ version: 2.1
 #  python: circleci/python@2.0.3
 
 jobs:
-  build: # this can be any name you choose
+  build:
     executor: python/default
     working_directory: /dockerapp
     docker:
@@ -22,13 +22,3 @@ jobs:
           command:
             docker-compose up -d
             docker-compose run appweb python test.py
-
-
-
-#workflows:
-#  test_my_app:
-#    jobs:
-#      - build_and_test
-#      - deploy:
-#          requires:
-#            - build_and_test # only deploy if the build_and_test job has completed
