@@ -1,21 +1,19 @@
 version: 2.1
 jobs:
   build:
-    executor: python/default
-    working_directory: /dockerapp
+    working_directory: /dockerappweb
     docker:
       - image: docker:22.06-rc-git
     steps:
       - checkout
       - setup_remote_docker
-      - python/install-packages:
-          pkg-manager: pip
       - run:
-          name: Install dependencies
+          name: Instalar dependencias
           command:
-            pip install docker-compose==2.11.2
+            apk add --no-cache py3-pip=22.1.1.-r0
+            pip install docker-compose==1.29.2
       - run:
           name: Run tests
-          command:
+          command: |
             docker-compose up -d
-            docker-compose run appweb python test.py
+            docker-compose run dockerapp python test.py
