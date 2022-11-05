@@ -10,8 +10,11 @@ jobs:
       - run:
           name: Instalar dependencias
           command:
+
             apk add --no-cache py3-pip=22.1.1.-r0
+
             pip install docker-compose==1.29.2
+
       - run:
           name: Run tests
           command: |
